@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দেশি ফুড ঘর | খাঁটি ও প্রিমিয়াম খাদ্যের বিশ্বাসযোগ্য উৎস</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --accent-gold: #d4af37;
+            --cream-bg: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --light-green: #2d6a4f;
+            --soft-gold: #f39c12;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--cream-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 70px; /* Mobile Sticky Nav Margin */
+        }
+
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--primary-green);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .top-bar {
+            background-color: #081c15;
+            text-align: center;
+            font-size: 0.85rem;
+            padding: 5px;
+            color: var(--accent-gold);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* PLACEHOLDER: লোগো ইমেজ */
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            object-fit: cover;
+        }
+
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .brand-title span { color: var(--accent-gold); }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 4px 12px;
+            width: 300px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 6px;
+            font-size: 0.9rem;
+        }
+
+        .search-box i { color: var(--primary-green); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(8, 28, 21, 0.85)), 
+                        url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200') center/cover;
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #fff;
+            color: var(--primary-green);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: var(--accent-gold);
+            position: absolute;
+            bottom: -6px;
+            left: 25%;
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+        }
+
+        .category-card i {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .category-card.coming-soon {
+            opacity: 0.6;
+        }
+
+        .badge-soon {
+            background: #e2e8f0;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* Product Cards */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* PLACEHOLDER: প্রোডাক্ট ইমেজ */
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-origin {
+            font-size: 0.8rem;
+            color: var(--light-green);
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 5px 0;
+            color: var(--text-color);
+        }
+
+        .product-desc {
+            font-size: 0.88rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .whatsapp-order-btn {
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .whatsapp-order-btn:hover { background-color: #128c7e; }
+
+        /* Story / Value Prop Section */
+        .value-section {
+            background: #e8f5e9;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin: 50px 0;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .value-item i {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        /* Customer Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .stars { color: var(--soft-gold); margin-bottom: 8px; }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-col h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { color: #ccc; text-decoration: none; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* Sticky Mobile Navigation */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-bottom-nav { display: none; }
+            .search-box { display: flex; }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links, .search-box { display: none; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+
+        .mobile-nav-item {
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.75rem;
+        }
+
+        .mobile-nav-item i {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="top-bar">
+            দেশের বিভিন্ন অঞ্চলের বিশ্বস্ত উৎস থেকে নির্বাচিত খাদ্যপণ্য এক জায়গায়
+        </div>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <!-- PLACEHOLDER: আপনার লোগোর ফাইল পাথ নিচে বসান -->
+                <img src="https://via.placeholder.com/100x100/1b4332/ffffff?text=DFG" alt="দেশি ফুড ঘর লোগো" class="logo-img">
+                <div class="brand-title">দেশি ফুড <span>ঘর</span></div>
+            </a>
+
+            <div class="search-box">
+                <input type="text" placeholder="পণ্য খুঁজুন (যেমন: আম, মধু)...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#categories">ক্যাটাগরি</a></li>
+                <li><a href="#products">পণ্যসমূহ</a></li>
+                <li><a href="#story">সংগ্রহের গল্প</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>খাঁটি ও প্রিমিয়াম স্বাদের বিশ্বাসযোগ্য প্ল্যাটফর্ম</h1>
+        <p>প্রকৃত উৎসের কাছাকাছি থেকে সংগ্রহ, মান যাচাইয়ে যত্ন এবং বিশুদ্ধতার প্রতি আমাদের নিরন্তর অঙ্গীকার।</p>
+        <a href="https://wa.me/8801700000000?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A7%8D%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF%20%E0%A6%AB%E0%A7%81%E0%A6%81%E0%A6%A1%20%E0%A6%98%E0%A6%B0%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%AA%E0%A6%A3%E0%A7%8D%E0%A6%AF%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A7%8D%E0%A5%A4" target="_blank" class="cta-btn">
+            <i class="fa-brands fa-whatsapp"></i> সরাসরি অর্ডার করুন
+        </a>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Category Section -->
+        <section id="categories">
+            <div class="section-header">
+                <h2>আমাদের ক্যাটাগরি</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <i class="fa-solid fa-lemon"></i>
+                    <h3>মৌসুমি ফল</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fa-solid fa-jar"></i>
+                    <h3>প্রাকৃতিক মধু</h3>
+                </div>
+                <div class="category-card">
+                    <i class="fa-solid fa-cube"></i>
+                    <h3>খাটি খেজুরের গুড়</h3>
+                </div>
+                <div class="category-card coming-soon">
+                    <i class="fa-solid fa-snowflake"></i>
+                    <h3>Frozen Corner</h3>
+                    <span class="badge-soon">শীঘ্রই আসছে</span>
+                </div>
+                <div class="category-card coming-soon">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <h3>Grocery Corner</h3>
+                    <span class="badge-soon">শীঘ্রই আসছে</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Products Section -->
+        <section id="products">
+            <div class="section-header">
+                <h2>চলতি মৌসুমের পণ্যসমূহ</h2>
+            </div>
+            <div class="product-grid">
+
+                <!-- Product 1: Mango -->
+                <div class="product-card">
+                    <!-- PLACEHOLDER: পণ্য ১-এর ছবি -->
+                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=600" alt="হিমসাগর আম" class="product-img">
+                    <div class="product-info">
+                        <span class="product-origin">📍 উৎস: রাজশাহী / চাঁপাইনবাবগঞ্জ</span>
+                        <h3 class="product-title">প্রিমিয়াম হিমসাগর আম</h3>
+                        <p class="product-desc">রাজশাহীর বাগানের তাজা এবং রাসায়নিক মুক্ত সুস্বাদু হিমসাগর আম।</p>
+                        <a href="https://wa.me/8801700000000?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A7%8D%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%B8%E0%A6%BE%E0%A6%97%E0%A6%B0%20%E0%A6%86%E0%A6%AE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A7%8D%E0%A5%A4%20%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A6%BE%E0%A6%A8%20%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%20%E0%A6%93%20%E0%A6%A1%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%BF%20%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A6%BE%E0%A6%AE%E0%A6%B0%E0%A7%8D%E0%A5%A4" target="_blank" class="whatsapp-order-btn">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp-এ অর্ডার করুন
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2: Honey -->
+                <div class="product-card">
+                    <!-- PLACEHOLDER: পণ্য ২-এর ছবি -->
+                    <img src="https://images.unsplash.com/photo-1587049352847-4a222e784d38?q=80&w=600" alt="সুন্দরবনের খলিশা মধু" class="product-img">
+                    <div class="product-info">
+                        <span class="product-origin">📍 উৎস: সুন্দরবন / প্রাকৃতিক উৎস</span>
+                        <h3 class="product-title">সুন্দরবনের খলিশা ফুলের মধু</h3>
+                        <p class="product-desc">প্রাকৃতিক ফুলের উৎস থেকে সতর্কতার সাথে সংগ্রহ করা ১00% খাঁটি মধু।</p>
+                        <a href="https://wa.me/8801700000000?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A7%8D%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%96%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A6%BE%20%E0%A6%AB%E0%A7%81%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A6%B0%20%E0%A6%AE%E0%A6%A0%E0%A7%81%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A7%8D%E0%A5%A4" target="_blank" class="whatsapp-order-btn">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp-এ অর্ডার করুন
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3: Gur -->
+                <div class="product-card">
+                    <!-- PLACEHOLDER: পণ্য ৩-এর ছবি -->
+                    <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=600" alt="পাটালি গুড়" class="product-img">
+                    <div class="product-info">
+                        <span class="product-origin">📍 উৎস: যশোর / ঐতিহ্যবাহী গাছি</span>
+                        <h3 class="product-title">প্রিমিয়াম খাঁটি পাটালি গুড়</h3>
+                        <p class="product-desc">কোনো প্রকার কেমিক্যাল বা ভেজাল মিশ্রণ ছাড়া তৈরি দেশীয় ঐতিহ্যের পাটালি গুড়।</p>
+                        <a href="https://wa.me/8801700000000?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A7%8D%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%AA%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A6%B2%E0%A6%BF%20%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A7%8D%E0%A5%A4" target="_blank" class="whatsapp-order-btn">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp-এ অর্ডার করুন
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Value Section / Collection Story -->
+        <section class="value-section" id="story">
+            <div class="section-header">
+                <h2>কেন দেশি ফুড ঘর?</h2>
+            </div>
+            <div class="value-grid">
+                <div class="value-item">
+                    <i class="fa-solid fa-seedling"></i>
+                    <h3>প্রাকৃতিক উৎস</h3>
+                    <p>সরাসরি তৃণমূল ও নিজস্ব তত্ত্বাবধানে সংগৃহীত খাদ্য উপাদান।</p>
+                </div>
+                <div class="value-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>গুণমান নিশ্চিতকরণ</h3>
+                    <p>প্রতিটি পণ্যের মান ও পরিচ্ছন্নতা কঠোরভাবে পরীক্ষা করা হয়।</p>
+                </div>
+                <div class="value-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h3>দ্রুত ডেলিভারি</h3>
+                    <p>প্যাকেজিং নিশ্চিত করে সুরক্ষিতভাবে আপনার দোড়গোড়ায় পৌঁছানো।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+        <section id="reviews">
